@@ -1,0 +1,3 @@
+SELECt AVG(price)
+FROM superstore
+WHERE category="Kitchen Supplies"

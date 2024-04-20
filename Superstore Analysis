@@ -1,0 +1,14 @@
+SELECT item_name, price
+FROM superstore
+ORDER BY price;
+
+SELECT AVG(price)
+FROM superstore;
+
+SELECT MAX(price) 
+FROM superstore
+WHERE category ='Kitchen Supplies';
+
+SELECT stock_quantity, item_name
+FROM superstore
+WHERE item_name='Memory Foam Mattress';

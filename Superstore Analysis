@@ -1,13 +1,27 @@
+
+
+
+Write a SQL query that orders the items by price.
+
 SELECT item_name, price
 FROM superstore
 ORDER BY price;
 
+
+Write a SQL query that shows the average price of all items
+
 SELECT AVG(price)
 FROM superstore;
+
+
+Write a SQL query that shows the maximum price for an item in the Kitchen Supplies category
 
 SELECT MAX(price) 
 FROM superstore
 WHERE category ='Kitchen Supplies';
+
+
+Write a SQL query that shows the quanity of Memory Foam Mattresses in stock
 
 SELECT stock_quantity, item_name
 FROM superstore

@@ -56,7 +56,42 @@ VALUES
     ('Company JJ', 'Manufacturing', 370.0, 3100, 1, 20, 12, 7.6),
     ('Company KK', 'Healthcare', 150.2, 3400, 0, 16, 8, 5.3);
 
+Rank the Fortune 500 companies as High, Low, or Average based on their number of paid time off days offered. 
 
+SELECT company_name, paid_time_off_days,
+CASE WHEN paid_time_off_days >15 AND paid_time_off_days<20 THEN "Average"
+WHEN paid_time_off_days>=20 THEN "High"
+ELSE "Low" END AS paid_time_off_ranking
+FROM fortune_companies
+
+Show the average number of employees for the companies that offer 10 or more weeks of maternity leave
+
+SELECT AVG(employees)
+FROM fortune_companies
+WHERE maternity_leave_weeks >=10
+
+Show which industries offer healthcare
+
+SELECT industry
+FROM fortune_companies
+GROUP BY industry
+HAVING healthcare_benefits=1
+
+
+Show all industries that have revenue greater than 300 billion in descending order and round the revenue to 1 decimal
+
+SELECT industry, round(revenue,1)
+FROM fortune_companies
+WHERE revenue >=300
+GROUP BY industry
+ORDER BY revenue DESC
+
+Show the average revenue per industry in ascending order, with revenue rounded to the nearst whole number
+
+SELECT industry, ROUND(AVG(revenue)) AS average_revenue
+FROM fortune_companies
+GROUP BY industry
+ORDER BY average_revenue ASC
 
 
 Show the companies that are in the Energy and Technology industries 
@@ -65,10 +100,10 @@ SELECT company_name
 FROM fortune_companies
 WHERE industry IN("Energy","Technology")
 
-Show the companies that have healthcare benefits, at least 20 paid off days, 
+Show the number of companies that have healthcare benefits, at least 20 paid off days, 
 and have at least 9 weeks of maternity leave
 
-SELECT company_name
+SELECT COUNT(company_name)
 FROM fortune_companies
 WHERE healthcare_benefits=1 
 AND paid_time_off_days>=20

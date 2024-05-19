@@ -1,4 +1,4 @@
-This project utilized data from the following Netflix data set:
+This project utilized data from the following Fortune 500 company data set:
 
 CREATE TABLE fortune_companies (
     company_id INTEGER PRIMARY KEY,

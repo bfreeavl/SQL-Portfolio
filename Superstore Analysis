@@ -1,4 +1,4 @@
-This project utilized data from the following Netflix data set:
+This project utilized data from the following superstore data set:
 
 CREATE TABLE superstore (
     item_id INTEGER PRIMARY KEY,

@@ -27,7 +27,7 @@ VALUES
     (14, 'Cutlery Set', 'Kitchen Supplies', 34.50, 40, 4.4),
     (15, 'Cozy Throw Blanket', 'Furnishings', 24.99, 100, 4.2);
 
-
+The following queries were performed:
 
 Write a SQL query that orders the items by price.
 

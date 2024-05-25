@@ -30,10 +30,10 @@ SELECT distinct product, price FROM BIT_DB.JanSales
 ORDER BY price ASC LIMIT 1
 
 #5. What is the total revenue for each product sold in January?
-SELECT sum(quantity)*price as revenue
-,product
-FROM BIT_DB.JanSales
-GROUP BY product
+SELECT Product, ROUND(SUM(Price)) Total_Revenue
+FROM JanSales
+GROUP BY Product
+ORDER BY SUM(Price) ASC
 
 #6. Which products were sold in February at 548 Lincoln St, Seattle, WA 98101, how many of each were sold, and what was the total revenue?
 select 

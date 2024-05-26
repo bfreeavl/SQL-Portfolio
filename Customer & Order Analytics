@@ -85,5 +85,12 @@ ON customers.order_id=FebSales.orderID
 WHERE length(orderid) = 6 
 AND orderid <> 'Order ID'
 
+#13. Which product brought in the most revenue in January and how much revenue did it bring in total?;
+SELECT Product, SUM(quantity*price) AS Revenue
+FROM JanSales
+GROUP BY Product
+ORDER BY Revenue DESC
+LIMIT 1
+
 
 

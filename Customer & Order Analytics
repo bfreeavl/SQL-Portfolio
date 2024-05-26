@@ -29,10 +29,9 @@ ORDER BY Price ASC
 
 
 #5. What is the total revenue for each product sold in January?
-SELECT Product, ROUND(SUM(Price)) Total_Revenue
+SELECT Product, ROUND(SUM(Quantity)*Price,2) Total_Jan_Revenue
 FROM JanSales
 GROUP BY Product
-ORDER BY SUM(Price) ASC
 
 #6. Which products were sold in February at 548 Lincoln St, Seattle, WA 98101, how many of each were sold, and what was the total revenue?
 select 

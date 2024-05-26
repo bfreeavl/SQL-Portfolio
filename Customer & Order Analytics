@@ -4,20 +4,21 @@
 SELECT COUNT(orderid) Jan_Order_Amount
 FROM JanSales
 WHERE length(orderid) = 6 
+AND orderid <> 'Order ID'
 
 
 #2. How many of those orders were for an iPhone? 
-SELECT COUNT(orderid)
+SELECT COUNT(orderID) Jan_iphone_orders
 FROM JanSales
-WHERE Product='iPhone'
-AND length(orderid) = 6 
+WHERE length(orderID) = 6
+AND Product = 'iPhone'
 AND orderid <> 'Order ID'
 
 #3. Select the customer account numbers for all the orders that were placed in February. 
-SELECT distinct acctnum
-FROM customers 
-INNER JOIN FebSales 
-ON customers.order_id=FebSales.orderid
+SELECT DISTINCT acctnum
+FROM customers cust
+INNER JOIN FebSales Feb
+ON cust.order_id=Feb.orderID
 WHERE length(orderid) = 6 
 AND orderid <> 'Order ID'
 

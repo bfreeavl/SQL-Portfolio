@@ -69,5 +69,13 @@ FROM FebSales
 WHERE Product LIKE '%Headphone%'
 GROUP BY Product
 
+#11. What was the average amount spent per account in February? 
+SELECT AVG(quantity*price)
+FROM customers
+LEFT JOIN FebSales
+ON customers.order_id=FebSales.orderID
+WHERE length(orderid) = 6 
+AND orderid <> 'Order ID'
+
 
 

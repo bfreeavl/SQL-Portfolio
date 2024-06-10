@@ -1,0 +1,12 @@
+
+1. How many artists have a popularity rating of 90 or greater?
+SELECT COUNT(artist_name)
+ FROM Spotifydata
+ WHERE popularity >='90'
+
+
+What is the average danceability rating for artists with a popularity rating of 90 or greater?
+SELECT AVG(danceability)
+FROM Spotifydata
+WHERE popularity >=90
+

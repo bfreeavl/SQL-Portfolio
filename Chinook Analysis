@@ -23,3 +23,9 @@ JOIN chinook.invoices
 ON customers.CustomerId=invoices.CustomerId
 WHERE customers.country="Brazil"
 
+4. Show the employees who are Sales Agents
+
+SELECT FirstName, LastName, title
+FROM chinook.employees
+WHERE title="Sales Support Agent"
+

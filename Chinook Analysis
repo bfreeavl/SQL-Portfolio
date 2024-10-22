@@ -8,3 +8,18 @@ The following queries were performed:
 SELECT FirstName, LastName, CustomerId, Country
 FROM chinook.customers
 WHERE Country<>"USA"
+
+2. Show only the Customers from Brazil.
+
+SELECT FirstName, LastName
+FROM chinook.customers
+WHERE Country="Brazil"
+
+3. Find the Invoices of customers who are from Brazil.
+
+SELECT FirstName, LastName, InvoiceID, BillingCountry, InvoiceDate, Country
+FROM chinook.customers
+JOIN chinook.invoices
+ON customers.CustomerId=invoices.CustomerId
+WHERE customers.country="Brazil"
+

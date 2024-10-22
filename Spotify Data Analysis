@@ -39,3 +39,46 @@ SELECT AVG(danceability), artist_name
 FROM Spotifydata
 GROUP BY artist_name
 
+3. Who art the top 10 artists based on popularity?
+
+SELECT artist_name, AVG(popularity)
+FROM Spotifydata
+GROUP BY artist_name
+ORDER BY popularity DESC
+LIMIT 10
+
+4. What artist released the longest song?
+
+SELECT artist_name, MAX(duration_ms)
+FROM Spotifydata
+
+5. What is the average danceability for the 10 most popular songs?
+
+SELECT AVG(danceability) as avg_danceability
+FROM
+(SELECT danceability
+FROM Spotifydata
+ORDER BY popularity desc
+LIMIT 10)
+
+6. Which artist has the least energetic song?
+
+SELECT artist_name, energy
+FROM Spotifydata
+ORDER BY energy asc
+LIMIT 1
+
+7. What is the loudest song by Olivia Rodrigo?
+
+SELECT track_name, loudness
+FROM Spotifydata
+WHERE artist_name="Olivia Rodrigo"
+ORDER BY loudness DESC
+LIMIT 1
+
+8.How many songs have a tempo between 100 and 150 BPM?
+
+SELECT COUNT(track_name) AS Tempo_Count
+FROM Spotifydata
+WHERE tempo BETWEEN 100 AND 150
+

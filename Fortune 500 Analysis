@@ -66,20 +66,20 @@ SELECT company_name, paid_time_off_days,
 CASE WHEN paid_time_off_days >15 AND paid_time_off_days<20 THEN "Average"
 WHEN paid_time_off_days>=20 THEN "High"
 ELSE "Low" END AS paid_time_off_ranking
-FROM fortune_companies
+FROM fortune_companies;
 
 2.Show the average number of employees for the companies that offer 10 or more weeks of maternity leave
 
 SELECT AVG(employees)
 FROM fortune_companies
-WHERE maternity_leave_weeks >=10
+WHERE maternity_leave_weeks >=10;
 
 3.Show which industries offer healthcare
 
 SELECT industry
 FROM fortune_companies
 GROUP BY industry
-HAVING healthcare_benefits=1
+HAVING healthcare_benefits=1;
 
 
 4.Show all industries that have revenue greater than 300 billion in descending order and round the revenue to 1 decimal
@@ -88,21 +88,21 @@ SELECT industry, round(revenue,1)
 FROM fortune_companies
 WHERE revenue >=300
 GROUP BY industry
-ORDER BY revenue DESC
+ORDER BY revenue DESC;
 
 5.Show the average revenue per industry in ascending order, with revenue rounded to the nearst whole number
 
 SELECT industry, ROUND(AVG(revenue)) AS average_revenue
 FROM fortune_companies
 GROUP BY industry
-ORDER BY average_revenue ASC
+ORDER BY average_revenue ASC;
 
 
 6.Show the companies that are in the Energy and Technology industries 
 
 SELECT company_name
 FROM fortune_companies
-WHERE industry IN("Energy","Technology")
+WHERE industry IN("Energy","Technology");
 
 7.Show the number of companies that have healthcare benefits, at least 20 paid off days, 
 and have at least 9 weeks of maternity leave
@@ -111,10 +111,10 @@ SELECT COUNT(company_name)
 FROM fortune_companies
 WHERE healthcare_benefits=1 
 AND paid_time_off_days>=20
-AND maternity_leave_weeks>=9
+AND maternity_leave_weeks>=9;
 
 8.Show the average number of maternity leave weeks for companies with revenue over 300.
 
 SELECT AVG(maternity_leave_weeks)
 FROM fortune_companies
-WHERE revenue>=300
+WHERE revenue>=300;

@@ -44,3 +44,9 @@ SELECT COUNT(*)
 FROM chinook.invoices
 WHERE InvoiceDate LIKE '2009%';
 
+7. What are the total sales for 2009?
+
+SELECT SUM(Total)
+FROM chinook.invoices
+WHERE strftime('%Y', InvoiceDate) = '2009';
+

@@ -50,3 +50,16 @@ SELECT SUM(Total)
 FROM chinook.invoices
 WHERE strftime('%Y', InvoiceDate) = '2009';
 
+8. Show the total sales made by each sales agent.
+
+SELECT employees.FirstName AS EmployeeName, employees.LastName AS EmployeeLastName, SUM(invoice_items.UnitPrice*invoice_items.Quantity) AS TotalSales
+FROM employees
+LEFT JOIN customers
+ON customers.SupportRepId=employees.EmployeeId
+LEFT JOIN invoices
+ON invoices.CustomerId=customers.CustomerId
+LEFT JOIN invoice_items
+ON invoice_items.InvoiceId=invoices.InvoiceId
+GROUP BY employees.EmployeeId
+ORDER BY TotalSales DESC;
+

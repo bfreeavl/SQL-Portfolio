@@ -108,3 +108,18 @@ ON invoice_items.InvoiceId=invoices.InvoiceId
 GROUP BY employees.EmployeeId
 ORDER BY TotalSales DESC;
 
+14. Which sales agent made the most dollars in sales in 2009?
+
+SELECT emp.FirstName AS SalesAgentFirstName, emp.LastName AS SalesAgentLastName,ROUND(SUM(invI.Quantity*invI.UnitPrice),2) AS TotalSales
+FROM employees AS emp
+LEFT JOIN customers AS cust
+ON cust.SupportRepId=emp.EmployeeId
+LEFT JOIN invoices AS inv
+ON inv.CustomerId=cust.CustomerId
+LEFT JOIN invoice_items AS invI
+ON inv.InvoiceId=invI.InvoiceId
+WHERE inv.InvoiceDate BETWEEN '2009-01-01' AND '2009-12-31'
+GROUP BY emp.EmployeeId
+ORDER BY TotalSales DESC
+LIMIT 1;
+

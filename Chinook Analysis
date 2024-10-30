@@ -123,3 +123,12 @@ GROUP BY emp.EmployeeId
 ORDER BY TotalSales DESC
 LIMIT 1;
 
+15. How many tracks are there with the Rock and Jazz genres?
+
+SELECT COUNT(*) AS RockAndJazzTracks
+FROM genres
+JOIN tracks
+ON tracks.GenreId=genres.GenreId
+WHERE genres.Name='Rock' OR genres.Name='Jazz';
+
+

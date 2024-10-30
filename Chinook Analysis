@@ -32,7 +32,7 @@ WHERE title="Sales Support Agent";
 5.Find a unique/distinct list of billing countries from the Invoice table.
 
 SELECT DISTINCT BillingCountry
-FROM chinook.invoices
+FROM chinook.invoices;
 
 6.Provide a query that shows the invoices associated with each sales agent. The resulting table should include the Sales Agent's full name.
 
@@ -41,8 +41,7 @@ FROM chinook.employees AS Emp
 JOIN chinook.customers AS Cus
 ON Emp.EmployeeID=Cus.SupportRepId
 JOIN chinook.invoices AS Inv
-ON Cus.CustomerId=Inv.CustomerId
-
+ON Cus.CustomerId=Inv.CustomerId;
 
 7.Show the Invoice Total, Customer name, Country, and Sales Agent name for all invoices and customers.
 
@@ -64,6 +63,37 @@ WHERE InvoiceDate LIKE '2009%';
 SELECT SUM(Total)
 FROM chinook.invoices
 WHERE strftime('%Y', InvoiceDate) = '2009';
+
+10. Write a query that includes the purchased track name with each invoice line ID.
+
+SELECT invoice_items.InvoiceLineId, tracks.Name AS TrackName
+FROM chinook.tracks
+JOIN invoice_items
+ON invoice_items.TrackId=tracks.TrackId
+ORDER BY InvoiceLineId;
+
+11. Write a query that includes the purchased track name AND artist name with each invoice line ID.
+
+SELECT invoice_items.InvoiceLineId, tracks.Name AS TrackName, artists.Name AS ArtistName
+FROM chinook.tracks
+JOIN chinook.invoice_items
+ON invoice_items.TrackId=tracks.TrackId
+JOIN chinook.albums 
+ON albums.AlbumId=tracks.AlbumId
+JOIN chinook.artists
+ON artists.ArtistId=albums.ArtistId
+ORDER BY invoice_items.InvoiceLineId;
+
+12. Provide a query that shows all the Tracks, and include the Album name, Media type, and Genre.
+
+SELECT tracks.Name AS TrackName, albums.Title AS AlbumTitle, media_types.Name AS MediaType, Genres.Name AS Genre
+FROM chinook.tracks
+LEFT JOIN chinook.albums
+ON tracks.AlbumId=albums.AlbumId
+LEFT JOIN chinook.media_types
+ON tracks.MediaTypeId=media_types.MediaTypeId
+LEFT JOIN chinook.Genres
+ON tracks.GenreId=Genres.GenreId;
 
 13. Show the total sales made by each sales agent.
 
